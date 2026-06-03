@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srećan Rođendan, Bako! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <audio id="birthdaySong" src="birthdaysong.mp3" preload="auto"></audio>
+
+    <div class="wrapper">
+        <main class="card-container">
+            <div class="birthday-card" id="birthdayCard">
+                <div class="card-side front">
+                    <div class="card-content">
+                        <div class="icon-layer">🎂</div>
+                        <h1>Srećan rođendan, <br><span class="highlight">Baba!</span></h1>
+                        <p class="hint">Klikni da otvoriš čestitku ✨</p>
+                    </div>
+                </div>
+
+                <div class="card-side back">
+                    <div class="card-content">
+                        <h2>Draga moja Baba Nado,</h2>
+                        <div class="message-body">
+                            <p>Želim ti naj naj najlepši rođendan ispunjen zdravljem, srećom, radošću i mirom.</p>
+                            <p>Hvala ti za svu bezuslovnu ljubav, svu toplinu, mudrost i svaki šamar koji si nesebično delila. Puno mi znači!</p>
+                            <p>Neka ti ova godina donese onoliko sreće koliko ti donosiš svima nama! Živela 100 godina! 🥂</p>
+                        </div>
+
+                        <div class="signature">
+                            <p>Voli te tvoj Milanče ❤️</p>
+                        </div>
+
+                        <div class="video-container">
+                            <video id="birthdayVideo" src="birthdayvideo.mp4" controls playsinline preload="auto"></video>
+                        </div>
+
+                        <button id="closeBtn" class="close-btn">Zatvori</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

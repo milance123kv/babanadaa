@@ -1,0 +1,255 @@
+/* Reset i CSS Varijable za lakše održavanje sistema dizajna */
+:root {
+    --primary-color: #d4a373;
+    --secondary-color: #faedcd;
+    --text-dark: #2f3e46;
+    --text-light: #6c584c;
+    --bg-gradient: linear-gradient(135deg, #fefae0 0%, #faedcd 100%);
+    --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg-gradient);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wrapper {
+    perspective: 1500px; /* Neophodno za realističan 3D efekat okretanja */
+    padding: 20px;
+}
+
+.card-container {
+    width: 380px;
+    height: 520px;
+    cursor: pointer;
+}
+
+/* 3D Card Flip Logika */
+.birthday-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.birthday-card.is-open {
+    transform: rotateY(180deg);
+}
+
+.card-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--card-shadow);
+    background: #ffffff;
+    border: 1px solid rgba(212, 163, 115, 0.2);
+}
+
+/* Prednja strana stilovi */
+.front {
+    background: #ffffff;
+    background-image: radial-gradient(var(--secondary-color) 1px, transparent 0);
+    background-size: 20px 20px;
+}
+
+.front .card-content {
+    text-align: center;
+}
+
+.icon-layer {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.front h1 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    line-height: 1.3;
+}
+
+.highlight {
+    color: #e63946;
+    font-size: 2.6rem;
+}
+
+.hint {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
+}
+
+/* Zadnja strana stilovi */
+.back {
+    transform: rotateY(180deg);
+    background: #fffdf9;
+}
+
+.back h2 {
+    font-family: var(--font-serif);
+    color: #e63946;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.message-body {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.message-body p {
+    margin-bottom: 15px;
+}
+
+.signature {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Canvas za konfete pozicioniranje */
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Ključne animacije (Micro-interactions) */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Responzivni dizajn za mobilne uređaje */
+@media (max-width: 400px) {
+    .card-container {
+        width: 320px;
+        height: 460px;
+    }
+    .front h1 { font-size: 1.8rem; }
+    .back h2 { font-size: 1.5rem; }
+    .message-body { font-size: 0.95rem; }
+}
+/* Unapređenje unutrašnje strane za prihvat videa i dugmeta */
+.back {
+    transform: rotateY(180deg);
+    background: #fffdf9;
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 30px 25px;
+}
+
+/* Prilagođeni elegantni skrolbar za unutrašnjost čestitke */
+.back::-webkit-scrollbar {
+    width: 6px;
+}
+.back::-webkit-scrollbar-track {
+    background: transparent;
+}
+.back::-webkit-scrollbar-thumb {
+    background: rgba(214, 163, 115, 0.4);
+    border-radius: 10px;
+}
+
+.back .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Stilovi za video okvir */
+.video-container {
+    width: 100%;
+    margin: 20px 0 10px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    background: #000000;
+    line-height: 0;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Stilovi za dugme ZATVORI */
+.close-btn {
+    background-color: #e63946;
+    color: #ffffff;
+    border: none;
+    padding: 12px 35px;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+    transition: all 0.3s ease;
+    
+    /* Početno stanje pre otvaranja (sakriveno i spušteno) */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Efekat pojave dugmeta kada se čestitka otvori */
+.birthday-card.is-open .close-btn {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
+}
+
+.close-btn:hover {
+    background-color: #cb2d3a;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(230, 57, 70, 0.4);
+}
+
+.close-btn:active {
+    transform: scale(0.98);
+}
